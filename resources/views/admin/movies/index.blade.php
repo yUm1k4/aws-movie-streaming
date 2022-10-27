@@ -25,7 +25,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <table id="example2" class="table table-bordered table-hover">
+                        <table id="movie-table" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                 <th>Id</th>
@@ -37,14 +37,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @foreach ($movies as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>
+                                            <img src="{{ asset('storage/thumbnails/' . $item->small_thumbnail) }}" alt="Thumbnail Movie" width="50%" style="max-height: 170px" class="img-thumbnail">
+                                        </td>
+                                        <td>{{ $item->categories }}</td>
+                                        <td>{{ $item->casts }}</td>
+                                        <td>
+                                            
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -53,4 +59,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script>
+        $('#movie-table').DataTable();
+    </script>
 @endsection
