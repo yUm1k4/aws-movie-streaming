@@ -13,4 +13,17 @@ class Transaction extends Model
     protected $fillable = [
         'package_id', 'user_id', 'amount', 'transaction_code', 'status' 
     ];
+
+    // connect ke model package dan model user
+    public function package()
+    {
+        // belongsTo = 1 transaksi hanya bisa memiliki 1 paket
+        return $this->belongsTo(Package::class);
+    }
+
+    public function user()
+    {
+        // belongsTo = 1 transaksi hanya bisa memiliki 1 user
+        return $this->belongsTo(User::class);
+    }
 }

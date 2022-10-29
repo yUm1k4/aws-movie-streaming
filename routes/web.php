@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Admin\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,11 @@ use App\Http\Controllers\Admin\MovieController;
 // group admin
 Route::group(['prefix' => 'admin'], function () {
     Route::view('/', 'admin.dashboard')->name('admin.dashboard');
+
+    // gorup transactions
+    Route::group(['prefix' => 'transaction'], function () {
+        Route::get('/', [TransactionController::class, 'index'])->name('admin.transactions');
+    });
 
     // group movie
     Route::group(['prefix' => 'movie'], function () {
