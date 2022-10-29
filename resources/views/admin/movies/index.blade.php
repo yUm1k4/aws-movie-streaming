@@ -47,7 +47,12 @@
                                         <td>{{ $item->categories }}</td>
                                         <td>{{ $item->casts }}</td>
                                         <td>
-                                            
+                                            <a href="{{ route('admin.movies.edit', $item->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('admin.movies.delete', $item->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
