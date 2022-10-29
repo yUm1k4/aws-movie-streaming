@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\TransactionController;
@@ -14,6 +15,9 @@ use App\Http\Controllers\Admin\TransactionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// gate
+Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
 
 // group admin
 Route::group(['prefix' => 'admin'], function () {
