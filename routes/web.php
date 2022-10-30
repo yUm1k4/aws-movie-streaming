@@ -16,6 +16,10 @@ use App\Http\Controllers\Admin\TransactionController;
 |
 */
 
+Route::get('/', function() {
+    return view('index');
+});
+
 // gate
 Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
 Route::post('admin/login', [LoginController::class, 'authenticate'])->name('admin.login.auth');
