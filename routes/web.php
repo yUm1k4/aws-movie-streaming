@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Member\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,9 @@ use App\Http\Controllers\Admin\TransactionController;
 |
 */
 
-Route::get('/', function() {
-    return view('index');
-});
+Route::get('/', function() { return view('index'); });
+Route::get('register', [RegisterController::class, 'index'])->name('member.register');
+Route::post('register', [RegisterController::class, 'store'])->name('member.register.store');
 
 // gate
 Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
