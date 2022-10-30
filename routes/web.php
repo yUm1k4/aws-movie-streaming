@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
+use App\Http\Controllers\Member\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,20 @@ use App\Http\Controllers\Member\LoginController as MemberLoginController;
 */
 
 Route::get('/', function() { return view('index'); });
+
+// gate member/user
 Route::get('register', [RegisterController::class, 'index'])->name('member.register');
 Route::post('register', [RegisterController::class, 'store'])->name('member.register.store');
 Route::get('login', [MemberLoginController::class, 'index'])->name('member.login');
 Route::post('login', [MemberLoginController::class, 'auth'])->name('member.login.auth');
 
-// gate
+// group member
+Route::group(['prefix' => 'member'], function() {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('member.dashboard');
+    Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout');
+});
+
+// gate admin
 Route::get('admin/login', [AdminLoginController::class, 'index'])->name('admin.login');
 Route::post('admin/login', [AdminLoginController::class, 'authenticate'])->name('admin.login.auth');
 
@@ -54,8 +63,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function () 
     // Route::resource('genres', 'Admin\GenreController');
     // Route::resource('users', 'Admin\UserController');
 });
-
-// Route::view('/', 'admin.dashboard');
-// Route::get('/', function () {
-//     return view('welcome');
-// });

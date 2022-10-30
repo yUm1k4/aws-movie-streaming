@@ -24,16 +24,17 @@ class LoginController extends Controller
         $credentials['role'] = 'user';
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return 'berhasil';
-            // return redirect()->route('member.dashboard');
+            return redirect()->route('member.dashboard');
         }
 
         return back()->withErrors(['credentials' => 'Your email or password is incorrect.'])->withInput();
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('member.login');
     }
 }
