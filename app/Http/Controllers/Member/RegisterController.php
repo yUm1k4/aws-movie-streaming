@@ -29,7 +29,6 @@ class RegisterController extends Controller
 
         User::create($data);
 
-        return redirect()->route('member.register')->with('success', 'Register success, please login');
-        // return redirect()->route('member.login')->with('success', 'Register success, please login');
+        return redirect()->route('member.login')->with('success', 'Register success, please login');
     }
 }
