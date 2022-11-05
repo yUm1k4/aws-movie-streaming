@@ -117,13 +117,15 @@
                                 </div>
                             </div>
 
-                            <a href="success_page.html"
-                                class="mt-10 py-3 block outline outline-1 outline-stream-gray rounded-full text-center">
-                                <span class="text-stream-gray text-base font-normal">
-                                    Subscribe
-                                    Now
-                                </span>
-                            </a>
+                            <form action="{{ route('member.transaction.store') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="package_id" value="{{ $standardPackage->id }}">
+                                <button type="submit" class="mt-10 py-3 block outline outline-1 outline-stream-gray rounded-full text-center">
+                                    <span class="text-stream-gray text-base font-normal">
+                                        Subscribe Now
+                                    </span>
+                                </button>
+                            </form>
                         </div>
                         <!-- Card -->
                         <div class="pricing-card">
@@ -177,12 +179,15 @@
                                 </div>
                             </div>
 
-                            <a href="success_page.html" class="mt-10 py-3 block bg-indigo-600 rounded-full text-center">
-                                <span class="text-white text-base font-semibold">
-                                    Subscribe
-                                    Now
-                                </span>
-                            </a>
+                            <form action="{{ route('member.transaction.store') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="package_id" value="{{ $goldPackage->id }}">
+                                <button type="submit" class="mt-10 py-3 block bg-indigo-600 rounded-full text-center">
+                                    <span class="text-white text-base font-normal">
+                                        Subscribe Now
+                                    </span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

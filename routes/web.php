@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\MovieController;
-use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\MovieController as MemberMovieController;
 use App\Http\Controllers\Member\PricingController;
+use App\Http\Controllers\Member\TransactionController as MemberTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
     Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout');
     Route::get('movie/{id}', [MemberMovieController::class, 'show'])->name('member.movie.detail');
+
+    // transaction
+    Route::post('transaction', [MemberTransactionController::class, 'store'])->name('member.transaction.store');
 });
 
 // gate admin
@@ -49,7 +53,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function () 
 
     // gorup transactions
     Route::group(['prefix' => 'transaction'], function () {
-        Route::get('/', [TransactionController::class, 'index'])->name('admin.transactions');
+        Route::get('/', [AdminTransactionController::class, 'index'])->name('admin.transactions');
     });
 
     // group movie
