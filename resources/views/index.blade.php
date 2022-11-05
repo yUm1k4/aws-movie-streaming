@@ -50,8 +50,7 @@
                         <button class="p-1 outline-none mobile-menu-button" data-target="#navigation">
                             <svg class="text-white w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 8h16M4 16h16"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
                             </svg>
                         </button>
                     </div>
@@ -63,7 +62,7 @@
                         <div class="flex flex-col w-full font-normal lg:w-auto lg:gap-12 lg:items-center lg:flex-row">
                             <a href="#!" class="nav-link-item">Genre</a>
                             <a href="#!" class="nav-link-item">Featured</a>
-                            <a href="pricing.html" class="nav-link-item">Pricing</a>
+                            <a href="{{ route('pricing') }}" class="nav-link-item">Pricing</a>
                         </div>
                         <a href="{{ url('/') }}" class="hidden lg:block -ml-36">
                             <img src="{{ asset('stream/assets/images/stream.svg') }}" alt="stream" />

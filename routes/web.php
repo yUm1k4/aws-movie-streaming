@@ -8,6 +8,7 @@ use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\MovieController as MemberMovieController;
+use App\Http\Controllers\Member\PricingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ use App\Http\Controllers\Member\MovieController as MemberMovieController;
 */
 
 Route::get('/', function() { return view('index'); });
+Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
 
 // gate member/user
 Route::get('register', [RegisterController::class, 'index'])->name('member.register');
